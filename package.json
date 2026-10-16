@@ -1,0 +1,17 @@
+{
+  "name": "theowlden",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "migrate": "npm run db:migrate -w backend",
+    "generate": "npm run db:generate -w backend",
+    "seed": "npm run seed -w backend",
+    "typecheck": "npm run typecheck -w backend && npm run build -w frontend",
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev -w backend\" \"npm run dev -w frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}
